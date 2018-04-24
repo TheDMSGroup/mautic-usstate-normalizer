@@ -1,2 +1,2 @@
-# mautic-usstate-normalizer
-Normalize US States to their abbreviations on save (WIP)
+Coming soon:
+Allows the normalization of US states for creation, filtering, and anywhere else I find it. 
