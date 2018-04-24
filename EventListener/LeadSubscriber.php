@@ -31,7 +31,16 @@ class LeadSubscriber extends CommonSubscriber
 
     public function doContactNormalizedSave(LeadEvent $event)
     {
-        $stop = 'here';
+        try {
+            $helper = new USStateMapHelper();
+            $lead = $event->getLead();
+            if (($this->params['store_as'] == 'properName' &&
+                !in_array($lead->getState(), $helper->getProperNames()))) {
+                $lead->addUpdatedField('state', $helper->getStateForAbbreviation($lead->getState()));
+            } elseif (!in_array($lead->getState(), $helper->getAbbreviations())) {
+                $lead->addUpdatedField('state', $helper->getAbbreviationForState($lead->getState()));
+            }
+        } catch (\Exception $e ) {}
     }
 
     public function doSegmentNormalizedSave(LeadListEvent $event)
@@ -72,8 +81,10 @@ class LeadSubscriber extends CommonSubscriber
             }
             $normalized[] = $filter;
         }
-        $event->getList()->setChanges(['filters', [$filters, $normalized]]);
-        $stop = 'here';
+        $changes = $event->getList()->getChanges(true);
+        $changes['filters'][1] = $normalized;
+        $event->getList()->setChanges($changes);
+
         return true;
     }
 

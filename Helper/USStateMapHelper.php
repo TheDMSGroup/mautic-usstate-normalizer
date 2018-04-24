@@ -11,25 +11,34 @@ namespace MauticPlugin\MauticUSStateNormalizerBundle\Helper;
 
 class USStateMapHelper
 {
-    private $map = [
-        'AL' => 'Alabama',      'AK' => 'Alaska',       'AZ' => 'Arizona',      'AR' => 'Arkansas',     'CA' => 'California',
-        'CO' => 'Colorado',     'CT' => 'Connecticut',  'DE' => 'Delaware',     'FL' => 'Florida',      'GA' => 'Georgia',
-        'HI' => 'Hawaii',       'ID' => 'Idaho',        'IL' => 'Illinois',     'IN' => 'Indiana',      'IA' => 'Iowa',
-        'KS' => 'Kansas',       'KY' => 'Kentucky',     'LA' => 'Louisiana',    'ME' => 'Maine',        'MD' => 'Maryland',
-        'MA' => 'Massachusetts','MI' => 'Michigan',     'MN' => 'Minnesota',    'MS' => 'Mississippi',  'MO' => 'Missouri',
-        'MT' => 'Montana',      'NE' => 'Nebraska',     'NV' => 'Nevada',       'NH' => 'New Hampshire','NJ' => 'New Jersey',
-        'NM' => 'New Mexico',   'NY' => 'New York',     'NC' => 'North Carolina','ND' => 'North Dakota','OH' => 'Ohio',
-        'OK' => 'Oklahoma',     'OR' => 'Oregon',       'PA' => 'Pennsylvania', 'RI' => 'Rhode Island', 'SC' => 'South Carolina',
-        'SD' => 'South Dakota', 'TN' => 'Tennessee',    'TX' => 'Texas',        'UT' => 'Utah',         'VT' => 'Vermont',
-        'VA' => 'Virginia',     'WA' => 'Washington',   'WV' => 'West Virginia','WI' => 'Wisconsin',    'WY' => 'Wyoming'
-    ];
+    public static function getMap()
+    {
+        return ['AL' => 'Alabama', 'AK' => 'Alaska', 'AZ' => 'Arizona', 'AR' => 'Arkansas', 'CA' => 'California',
+        'CO' => 'Colorado', 'CT' => 'Connecticut', 'DE' => 'Delaware', 'FL' => 'Florida', 'GA' => 'Georgia',
+        'HI' => 'Hawaii', 'ID' => 'Idaho', 'IL' => 'Illinois', 'IN' => 'Indiana', 'IA' => 'Iowa',
+        'KS' => 'Kansas', 'KY' => 'Kentucky', 'LA' => 'Louisiana', 'ME' => 'Maine', 'MD' => 'Maryland',
+        'MA' => 'Massachusetts', 'MI' => 'Michigan', 'MN' => 'Minnesota', 'MS' => 'Mississippi', 'MO' => 'Missouri',
+        'MT' => 'Montana', 'NE' => 'Nebraska', 'NV' => 'Nevada', 'NH' => 'New Hampshire', 'NJ' => 'New Jersey',
+        'NM' => 'New Mexico', 'NY' => 'New York', 'NC' => 'North Carolina', 'ND' => 'North Dakota', 'OH' => 'Ohio',
+        'OK' => 'Oklahoma', 'OR' => 'Oregon', 'PA' => 'Pennsylvania', 'RI' => 'Rhode Island', 'SC' => 'South Carolina',
+        'SD' => 'South Dakota', 'TN' => 'Tennessee', 'TX' => 'Texas', 'UT' => 'Utah', 'VT' => 'Vermont',
+        'VA' => 'Virginia', 'WA' => 'Washington', 'WV' => 'West Virginia', 'WI' => 'Wisconsin', 'WY' => 'Wyoming'];
+            }
+
+    /**
+     * @return array|null
+     */
+    public static function getStateOptions()
+    {
+        return array_flip(static::getMap());
+    }
 
     /**
      * @return array
      */
     public function getProperNames()
     {
-        return array_values($this->map);
+        return array_values(self::getMap());
     }
 
     /**
@@ -37,7 +46,7 @@ class USStateMapHelper
      */
     public function getAbbreviations()
     {
-        return array_keys($this->map);
+        return array_keys(self::getMap());
     }
 
     /**
@@ -49,7 +58,7 @@ class USStateMapHelper
      */
     public function getAbbreviationForState($state)
     {
-        $abbreviation = array_search($state, $this->map);
+        $abbreviation = array_search($state, self::getMap());
         if (false === $abbreviation) {
             throw new \Exception("Abbreviation requested for unknown state $state.");
         }
@@ -65,7 +74,7 @@ class USStateMapHelper
      */
     public function getStateForAbbreviation($abbreviation)
     {
-        if (!key_exists($abbreviation, $this->map)) {
+        if (!key_exists($abbreviation, self::getMap())) {
             throw new \Exception("State proper name requested for unknown $abbreviation.");
         }
         return $abbreviation;
