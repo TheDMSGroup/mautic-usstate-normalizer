@@ -64,6 +64,7 @@ class LeadSubscriber extends CommonSubscriber
                         } elseif (!in_array($filter['filter'], $helper->getAbbreviations())) {
                             $result = $helper->getAbbreviationForState($state);
                         }
+                        $change = ['filter' => []];
                     } catch (\Exception $e ) {}
                     $replacement[] = $result ? $result : $state;
                 }
@@ -71,8 +72,7 @@ class LeadSubscriber extends CommonSubscriber
             }
             $normalized[] = $filter;
         }
-        $event->getList()->setChanges($normalized);
-        $event->getList()->setFilters($normalized);
+        $event->getList()->setChanges(['filters', [$filters, $normalized]]);
         $stop = 'here';
         return true;
     }
