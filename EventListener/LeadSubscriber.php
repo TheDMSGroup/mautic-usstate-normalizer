@@ -12,8 +12,10 @@ namespace MauticPlugin\MauticUSStateNormalizerBundle\EventListener;
 use Mautic\CoreBundle\EventListener\CommonSubscriber;
 use Mautic\LeadBundle\Entity\ListLead;
 use Mautic\LeadBundle\Event\LeadEvent;
+use Mautic\LeadBundle\Event\LeadListEvent;
 use Mautic\LeadBundle\Event\LeadListFilteringEvent;
 use Mautic\LeadBundle\LeadEvents;
+use MauticPlugin\MauticUSStateNormalizerBundle\Helper\USStateMapHelper;
 
 class LeadSubscriber extends CommonSubscriber
 {
@@ -32,9 +34,35 @@ class LeadSubscriber extends CommonSubscriber
         $stop = 'here';
     }
 
-    public function doSegmentNormalizedSave(ListLead $event)
+    public function doSegmentNormalizedSave(LeadListEvent $event)
     {
+        $filters = $event->getList()->getFilters();
+        $normalized = [];
+        foreach ($filters as $filter) {
+            if ($filter['field'] === 'state') {
+                $replacement = [];
+                $helper = new USStateMapHelper();
+                if (is_array($filter['filter'])) {
+                    foreach ($filter['filter'] as $state) {
+                        $result = false;
+                        try {
+                            if ($this->params['store_as'] == 'properName' &&
+                                !in_array($state, $helper->getProperNames())) {
+                                $result = $helper->getStateForAbbreviation($state);
+                            } elseif (!in_array($state, $helper->getAbbreviations())) {
+                                $result = $helper->getAbbreviationForState($state);
+                            }
+                        } catch (\Exception $e ) {}
+                        $replacement[] = $result ? $result : $state;
+                    }
+                }
+                $filter['filter'] = $replacement;
+            }
+            $normalized[] = $filter;
+        }
+        $event->getList()->setChanges($normalized);
         $stop = 'here';
+        return true;
     }
 
     public function doSegmentPreProcess(LeadListFilteringEvent $event)

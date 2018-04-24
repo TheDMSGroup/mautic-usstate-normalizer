@@ -25,16 +25,32 @@ class USStateMapHelper
     ];
 
     /**
+     * @return array
+     */
+    public function getProperNames()
+    {
+        return array_values($this->map);
+    }
+
+    /**
+     * @return array
+     */
+    public function getAbbreviations()
+    {
+        return array_keys($this->map);
+    }
+
+    /**
      * @param $state
      *
-     * @return false|int|string
+     * @return false|string
      *
      * @throws \Exception
      */
     public function getAbbreviationForState($state)
     {
         $abbreviation = array_search($state, $this->map);
-        if (FALSE === $abbreviation) {
+        if (false === $abbreviation) {
             throw new \Exception("Abbreviation requested for unknown state $state.");
         }
         return $abbreviation;
@@ -50,7 +66,7 @@ class USStateMapHelper
     public function getStateForAbbreviation($abbreviation)
     {
         if (!key_exists($abbreviation, $this->map)) {
-            throw new \Exception("State abbreviation requested for unknown $state.");
+            throw new \Exception("State proper name requested for unknown $abbreviation.");
         }
         return $abbreviation;
     }

@@ -23,8 +23,11 @@ return [
             ],
         ],
         'events' => [
-            'plugin.mautic.ussstatenormalizer.config_event' => [
+            'plugin.mautic.ussstatenormalizer.config_subscriber' => [
                 'class' => 'MauticPlugin\MauticUSStateNormalizerBundle\EventListener\ConfigSubscriber',
+            ],
+            'plugin.mautic.ussstatenormalizer.lead_subscriber' => [
+                'class' => 'MauticPlugin\MauticUSStateNormalizerBundle\EventListener\LeadSubscriber',
             ],
         ],
         'integrations' => [
