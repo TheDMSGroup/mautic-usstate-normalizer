@@ -55,12 +55,24 @@ class LeadSubscriber extends CommonSubscriber
                         } catch (\Exception $e ) {}
                         $replacement[] = $result ? $result : $state;
                     }
+                } else {
+                    try {
+                        $state = $filter['filter'];
+                        if ($this->params['store_as'] == 'properName' &&
+                            !in_array($state, $helper->getProperNames())) {
+                            $result = $helper->getStateForAbbreviation($state);
+                        } elseif (!in_array($filter['filter'], $helper->getAbbreviations())) {
+                            $result = $helper->getAbbreviationForState($state);
+                        }
+                    } catch (\Exception $e ) {}
+                    $replacement[] = $result ? $result : $state;
                 }
                 $filter['filter'] = $replacement;
             }
             $normalized[] = $filter;
         }
         $event->getList()->setChanges($normalized);
+        $event->getList()->setFilters($normalized);
         $stop = 'here';
         return true;
     }
