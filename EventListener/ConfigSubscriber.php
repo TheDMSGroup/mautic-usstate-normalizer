@@ -3,18 +3,18 @@
  * Created by PhpStorm.
  * User: nbush
  * Date: 4/19/18
- * Time: 12:41 PM
+ * Time: 12:41 PM.
  */
 
 namespace MauticPlugin\MauticUSStateNormalizerBundle\EventListener;
 
-use Mautic\ConfigBundle\Event\ConfigEvent;
-use Mautic\CoreBundle\EventListener\CommonSubscriber;
 use Mautic\ConfigBundle\ConfigEvents;
 use Mautic\ConfigBundle\Event\ConfigBuilderEvent;
+use Mautic\ConfigBundle\Event\ConfigEvent;
+use Mautic\CoreBundle\EventListener\CommonSubscriber;
 
 /**
- * Class ConfigSubscriber
+ * Class ConfigSubscriber.
  */
 class ConfigSubscriber extends CommonSubscriber
 {
@@ -22,7 +22,7 @@ class ConfigSubscriber extends CommonSubscriber
     {
         return [
             ConfigEvents::CONFIG_ON_GENERATE => ['onConfigGenerate', 0],
-            ConfigEvents::CONFIG_PRE_SAVE    => ['onConfigSave', 0]
+            ConfigEvents::CONFIG_PRE_SAVE    => ['onConfigSave', 0],
         ];
     }
 
@@ -31,9 +31,9 @@ class ConfigSubscriber extends CommonSubscriber
         $config = $event->getParametersFromConfig('MauticUSStateNormalizerBundle');
 
         $event->addForm([
-            'formAlias' => 'usstatenormalizer_config',
-            'formTheme' => 'MauticUSStateNormalizerBundle:FormTheme\Config',
-            'parameters' => $config
+            'formAlias'  => 'usstatenormalizer_config',
+            'formTheme'  => 'MauticUSStateNormalizerBundle:FormTheme\Config',
+            'parameters' => $config,
         ]);
     }
 

@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: nbush
  * Date: 4/19/18
- * Time: 1:25 PM
+ * Time: 1:25 PM.
  */
 
 namespace MauticPlugin\MauticUSStateNormalizerBundle\Form\Type;
@@ -12,13 +12,13 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * Class ConfigType
+ * Class ConfigType.
  */
 class ConfigType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -33,12 +33,12 @@ class ConfigType extends AbstractType
                     ],
                     'choices_as_values' => true,
                     //'choice_attr' => ['class' => 'radio'],
-                    'data'  => $options['data']['store_as'],
-                    'label' => 'mautic.plugin.usstatenormalizer.store_as.label',
+                    'data'       => $options['data']['store_as'],
+                    'label'      => 'mautic.plugin.usstatenormalizer.store_as.label',
                     'label_attr' => ['class' => 'control-label'],
-                    'attr'  => [
+                    'attr'       => [
                         'tooltip' => 'mautic.plugin.usstatenormalizer.store_as.tooltip',
-                        'class' => 'form-control'
+                        'class'   => 'form-control',
                     ],
                     'expanded' => false,
                     'multiple' => false,
@@ -54,12 +54,12 @@ class ConfigType extends AbstractType
                     ],
                     'choices_as_values' => true,
                     //'choice_attr' => ['class' => 'radio'],
-                    'data'  => $options['data']['display_as'],
-                    'label' => 'mautic.plugin.usstatenormalizer.display_as.label',
+                    'data'       => $options['data']['display_as'],
+                    'label'      => 'mautic.plugin.usstatenormalizer.display_as.label',
                     'label_attr' => ['class' => 'control-label'],
-                    'attr'  => [
+                    'attr'       => [
                         'tooltip' => 'mautic.plugin.usstatenormalizer.display_as.tooltip',
-                        'class' => 'form-control'
+                        'class'   => 'form-control',
                     ],
                     'expanded' => false,
                     'multiple' => false,
@@ -74,5 +74,4 @@ class ConfigType extends AbstractType
     {
         return 'usstatenormalizer_config';
     }
-
 }

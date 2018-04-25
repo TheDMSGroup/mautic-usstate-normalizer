@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: nbush
  * Date: 4/19/18
- * Time: 3:43 PM
+ * Time: 3:43 PM.
  */
 ?>
 <div class="panel panel-primary">

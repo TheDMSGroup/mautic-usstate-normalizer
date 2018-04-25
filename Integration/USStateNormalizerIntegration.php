@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: nbush
  * Date: 4/19/18
- * Time: 11:47 AM
+ * Time: 11:47 AM.
  */
 
 namespace MauticPlugin\MauticUSStateNormalizerBundle\Integration;

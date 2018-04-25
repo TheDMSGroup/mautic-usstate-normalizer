@@ -19,7 +19,7 @@ return [
         'forms' => [
             'plugin.mautic.usstatenormalizer.config_form' => [
                 'class' => 'MauticPlugin\MauticUSStateNormalizerBundle\Form\Type\ConfigType',
-                'alias' => 'usstatenormalizer_config'
+                'alias' => 'usstatenormalizer_config',
             ],
         ],
         'events' => [
@@ -37,7 +37,7 @@ return [
         ],
     ],
     'parameters' => [
-        'store_as' => 'abbreviation',
+        'store_as'   => 'abbreviation',
         'display_as' => 'properName',
     ],
 ];
