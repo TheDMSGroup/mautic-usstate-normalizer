@@ -24,8 +24,6 @@ class LeadSubscriber extends CommonSubscriber
         return [
             LeadEvents::LEAD_PRE_SAVE => ['doContactNormalizedSave', -1],
             LeadEvents::LIST_PRE_SAVE => ['doSegmentNormalizedSave', 0],
-            LeadEvents::LIST_PRE_PROCESS_LIST => ['doSegmentPreProcess', 0]
-
         ];
     }
 
@@ -73,7 +71,6 @@ class LeadSubscriber extends CommonSubscriber
                         } elseif (!in_array($filter['filter'], $helper->getAbbreviations())) {
                             $result = $helper->getAbbreviationForState($state);
                         }
-                        $change = ['filter' => []];
                     } catch (\Exception $e ) {}
                     $replacement[] = $result ? $result : $state;
                 }
@@ -86,10 +83,5 @@ class LeadSubscriber extends CommonSubscriber
         $event->getList()->setChanges($changes);
 
         return true;
-    }
-
-    public function doSegmentPreProcess(LeadListFilteringEvent $event)
-    {
-        $stop = 'here';
     }
 }
