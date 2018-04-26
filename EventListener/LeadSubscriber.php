@@ -6,13 +6,13 @@
  * Time: 8:24 AM.
  */
 
-namespace MauticPlugin\MauticUSStateNormalizerBundle\EventListener;
+namespace MauticPlugin\MauticUsstateNormalizerBundle\EventListener;
 
 use Mautic\CoreBundle\EventListener\CommonSubscriber;
 use Mautic\LeadBundle\Event\LeadEvent;
 use Mautic\LeadBundle\Event\LeadListEvent;
 use Mautic\LeadBundle\LeadEvents;
-use MauticPlugin\MauticUSStateNormalizerBundle\Helper\USStateMapHelper;
+use MauticPlugin\MauticUsstateNormalizerBundle\Helper\UsstateMapHelper;
 
 class LeadSubscriber extends CommonSubscriber
 {
@@ -27,7 +27,7 @@ class LeadSubscriber extends CommonSubscriber
     public function doContactNormalizedSave(LeadEvent $event)
     {
         try {
-            $helper = new USStateMapHelper();
+            $helper = new UsstateMapHelper();
             $lead   = $event->getLead();
             if (($this->params['store_as'] == 'properName' &&
                 !in_array($lead->getState(), $helper->getProperNames()))) {
@@ -46,7 +46,7 @@ class LeadSubscriber extends CommonSubscriber
         foreach ($filters as $filter) {
             if ($filter['field'] === 'state') {
                 $replacement = [];
-                $helper      = new USStateMapHelper();
+                $helper      = new UsstateMapHelper();
                 if (is_array($filter['filter'])) {
                     foreach ($filter['filter'] as $state) {
                         $result = false;

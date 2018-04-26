@@ -6,7 +6,7 @@
  * Time: 12:41 PM.
  */
 
-namespace MauticPlugin\MauticUSStateNormalizerBundle\EventListener;
+namespace MauticPlugin\MauticUsstateNormalizerBundle\EventListener;
 
 use Mautic\ConfigBundle\ConfigEvents;
 use Mautic\ConfigBundle\Event\ConfigBuilderEvent;
@@ -28,11 +28,11 @@ class ConfigSubscriber extends CommonSubscriber
 
     public function onConfigGenerate(ConfigBuilderEvent $event)
     {
-        $config = $event->getParametersFromConfig('MauticUSStateNormalizerBundle');
+        $config = $event->getParametersFromConfig('MauticUsstateNormalizerBundle');
 
         $event->addForm([
             'formAlias'  => 'usstatenormalizer_config',
-            'formTheme'  => 'MauticUSStateNormalizerBundle:FormTheme\Config',
+            'formTheme'  => 'MauticUsstateNormalizerBundle:FormTheme\Config',
             'parameters' => $config,
         ]);
     }

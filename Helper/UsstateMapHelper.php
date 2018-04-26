@@ -6,9 +6,9 @@
  * Time: 11:00 AM.
  */
 
-namespace MauticPlugin\MauticUSStateNormalizerBundle\Helper;
+namespace MauticPlugin\MauticUsstateNormalizerBundle\Helper;
 
-class USStateMapHelper
+class UsstateMapHelper
 {
     public static function getMap()
     {

@@ -6,10 +6,10 @@
  * Time: 9:49 AM.
  */
 
-namespace MauticPlugin\MauticUSStateNormalizerBundle;
+namespace MauticPlugin\MauticUsstateNormalizerBundle;
 
 use Mautic\PluginBundle\Bundle\PluginBundleBase;
 
-class MauticUSStateNormalizerBundle extends PluginBundleBase
+class MauticUsstateNormalizerBundle extends PluginBundleBase
 {
 }
