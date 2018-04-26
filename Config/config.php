@@ -19,12 +19,15 @@ return [
         'forms' => [
             'plugin.mautic.usstatenormalizer.config_form' => [
                 'class' => 'MauticPlugin\MauticUSStateNormalizerBundle\Form\Type\ConfigType',
-                'alias' => 'usstatenormalizer_config'
+                'alias' => 'usstatenormalizer_config',
             ],
         ],
         'events' => [
-            'plugin.mautic.ussstatenormalizer.config_event' => [
+            'plugin.mautic.ussstatenormalizer.config_subscriber' => [
                 'class' => 'MauticPlugin\MauticUSStateNormalizerBundle\EventListener\ConfigSubscriber',
+            ],
+            'plugin.mautic.ussstatenormalizer.lead_subscriber' => [
+                'class' => 'MauticPlugin\MauticUSStateNormalizerBundle\EventListener\LeadSubscriber',
             ],
         ],
         'integrations' => [
@@ -34,7 +37,7 @@ return [
         ],
     ],
     'parameters' => [
-        'store_as' => 'abbreviation',
+        'store_as'   => 'abbreviation',
         'display_as' => 'properName',
     ],
 ];
