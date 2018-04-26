@@ -6,7 +6,7 @@
  * Time: 1:25 PM.
  */
 
-namespace MauticPlugin\MauticUSStateNormalizerBundle\Form\Type;
+namespace MauticPlugin\MauticUsstateNormalizerBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

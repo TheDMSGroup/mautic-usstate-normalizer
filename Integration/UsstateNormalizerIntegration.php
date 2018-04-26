@@ -6,15 +6,15 @@
  * Time: 11:47 AM.
  */
 
-namespace MauticPlugin\MauticUSStateNormalizerBundle\Integration;
+namespace MauticPlugin\MauticUsstateNormalizerBundle\Integration;
 
 use Mautic\PluginBundle\Integration\AbstractIntegration;
 
-class USStateNormalizerIntegration extends AbstractIntegration
+class UsstateNormalizerIntegration extends AbstractIntegration
 {
     public function getName()
     {
-        return 'USStateNormalizer';
+        return 'UsstateNormalizer';
     }
 
     public function getDisplayName()

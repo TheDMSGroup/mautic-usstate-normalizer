@@ -18,21 +18,21 @@ return [
     'services' => [
         'forms' => [
             'plugin.mautic.usstatenormalizer.config_form' => [
-                'class' => 'MauticPlugin\MauticUSStateNormalizerBundle\Form\Type\ConfigType',
+                'class' => 'MauticPlugin\MauticUsstateNormalizerBundle\Form\Type\ConfigType',
                 'alias' => 'usstatenormalizer_config',
             ],
         ],
         'events' => [
             'plugin.mautic.ussstatenormalizer.config_subscriber' => [
-                'class' => 'MauticPlugin\MauticUSStateNormalizerBundle\EventListener\ConfigSubscriber',
+                'class' => 'MauticPlugin\MauticUsstateNormalizerBundle\EventListener\ConfigSubscriber',
             ],
             'plugin.mautic.ussstatenormalizer.lead_subscriber' => [
-                'class' => 'MauticPlugin\MauticUSStateNormalizerBundle\EventListener\LeadSubscriber',
+                'class' => 'MauticPlugin\MauticUsstateNormalizerBundle\EventListener\LeadSubscriber',
             ],
         ],
         'integrations' => [
             'plugin.mautic' => [
-                'class' => 'MauticPlugin\MauticUSStateNormalizerBundle\Integration\USStateNormalizerIntegration',
+                'class' => 'MauticPlugin\MauticUsstateNormalizerBundle\Integration\UsstateNormalizerIntegration',
             ],
         ],
     ],
