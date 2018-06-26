@@ -47,7 +47,7 @@ class UsstateMapHelper
     {
         $options = [];
         foreach (self::getMap() as $key => $value) {
-            $options[$key] = $key;
+            $options[$key]   = $key;
             $options[$value] = $key;
         }
 
