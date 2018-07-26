@@ -1,2 +1,3 @@
-Coming soon:
-Allows the normalization of US states for creation, filtering, and anywhere else I find it. 
+# Mautic US State Normalization [![Latest Stable Version](https://poser.pugx.org/thedmsgroup/mautic-usstate-normalizer/v/stable)](https://packagist.org/packages/thedmsgroup/mautic-usstate-normalizer-bundle) [![License](https://poser.pugx.org/thedmsgroup/mautic-usstate-normalizer-bundle/license)](https://packagist.org/packages/thedmsgroup/mautic-usstate-normalizer-bundle) [![Build Status](https://travis-ci.com/TheDMSGroup/mautic-usstate-normalizer.svg?branch=master)](https://travis-ci.com/TheDMSGroup/mautic-usstate-normalizer)
+
+Allows the normalization of US states (to abbreviations) for contact creation, filtering, etc. 
